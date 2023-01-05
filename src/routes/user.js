@@ -3,10 +3,10 @@ const Router = require("express");
 // add item to items, post request 
 const router = Router();
 
-router.get("api/user/profile", (req, res)=> {
-    
+router.get("/profile", (req, res)=> {
+    res.send(req.user);
 });
 
-router.put("api/user/profile", (req, res)=> {
+router.put("/profile", (req, res)=> {
     
 });;

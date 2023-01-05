@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const dbURL = "mongodb://localhost:27017/UBCSecondHand"
+const dbURL = "mongodb://localhost:27017/UBCSecondHand";
 mongoose.connect(dbURL).then(
     () => {
         console.log("the database is connected");
