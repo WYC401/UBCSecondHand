@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const session = require("express-session");
 const user = require("./routes/user");
+const items = require("./routes/items");
 const app = express();
 const PORT = 3000;
 require("./strategies/local");
@@ -25,7 +26,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use("/api/auth", auth);
 app.use("/api/user", user);
-
+app.use("/api/items", items);
 
 app.listen(PORT, 'localhost', () => {
     console.log(`is listening to ${PORT}` );
