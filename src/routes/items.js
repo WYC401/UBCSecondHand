@@ -57,30 +57,6 @@ router.delete("/:itemID", (req, res) => {
     });
 });
 
-
-
-
-
-//from searech side
-// app.get('/users', (req, res) => {
-//     let age = req.query.age;
-//     let operator;
-//     if(age.startsWith('gt')){
-//       operator = {$gt : parseInt(age.slice(2))};
-//     }else if(age.startsWith('lt')){
-//       operator = {$lt : parseInt(age.slice(2))};
-//     }
-//     // Perform the database query to retrieve the users
-//     User.find({age: operator}, (err, users) => {
-//       if (err) {
-//         res.status(500).send(err);
-//       } else {
-//         res.json(users);
-//       }
-//     });
-//   });
-//TODO: write a parse function which return an query object and be passed into find.
-//https://umbraco.com/knowledge-base/http-status-codes/
 router.get("/search", async (req, res) => {
     console.log( req.query);
     const parsedQuery = parseParams(req.query);

@@ -1,7 +1,8 @@
 //connect to database -> then mount the passport strategy -> auth router
 const express = require("express");
 require("./database/index"); 
-
+const https = require('https');
+const http = require('http');
 const auth = require("./routes/auth");
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
@@ -9,7 +10,7 @@ const session = require("express-session");
 const user = require("./routes/user");
 const items = require("./routes/items");
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 require("./strategies/local");
 app.use(express.json());// it's a global middleware
 app.use(cookieParser());
@@ -27,7 +28,7 @@ app.use(passport.session());
 app.use("/api/auth", auth);
 app.use("/api/user", user);
 app.use("/api/items", items);
-
+app.set('json spaces', 2);
 app.listen(PORT, 'localhost', () => {
     console.log(`is listening to ${PORT}` );
 });
