@@ -6,7 +6,7 @@ const User = require("../database/schemas/User.js");
 passport.serializeUser((user,done) => {
     console.log("serializing user");
     console.log(user);
-    done(null, user.id);
+    done(null, user._id);
 });
 
 passport.deserializeUser(async (id, done) => {

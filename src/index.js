@@ -9,10 +9,13 @@ const passport = require("passport");
 const session = require("express-session");
 const user = require("./routes/user");
 const items = require("./routes/items");
+const bodyParser = require('body-parser')
 const app = express();
 const PORT = 3001;
 require("./strategies/local");
+app.set('json spaces', 2);
 app.use(express.json());// it's a global middleware
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.get("/", (req, res) => {
     console.log("Hey I got you");
@@ -28,8 +31,11 @@ app.use(passport.session());
 app.use("/api/auth", auth);
 app.use("/api/user", user);
 app.use("/api/items", items);
-app.set('json spaces', 2);
-app.listen(PORT, 'localhost', () => {
+
+app.listen(PORT, 'localhost', (req, res) => {
+
+
+    
     console.log(`is listening to ${PORT}` );
 });
 

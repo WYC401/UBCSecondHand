@@ -65,7 +65,7 @@ router.get("/search", async (req, res) => {
         const cleanedKeywords = await breakIntoKeyword(req.query.keywords);
 
         const keywordConditon = createKeyWordCondition(cleanedKeywords);
-        console.log(keywordConditon["$or"][1]);
+        //console.log(keywordConditon["$or"][1]);
         temp = temp.where(keywordConditon);
     } 
 
@@ -84,8 +84,9 @@ router.get("/search", async (req, res) => {
 function createKeyWordCondition(cleanedKeywords) {
     const result = {};
     result["$or"] = [];
+    console.log(cleanedKeywords);
     for(let i in cleanedKeywords) {
-        
+        console.log(i);
         let tempTitle = {};
         let tempDescription = {}; 
         tempTitle["title"] = {};

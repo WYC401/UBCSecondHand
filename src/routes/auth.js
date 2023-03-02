@@ -5,8 +5,9 @@ const UserDB = require("../database/schemas/User");
 require("../strategies/local");
 router.post("/login", passport.authenticate('local'
 ), (req, res)=> {
+    console.log(req);
     console.log("Login In");
-    res.send(201);
+    res.send(200);
 });
 router.post("/register", async (req, res) => {
     console.log("welcome to login in page");
