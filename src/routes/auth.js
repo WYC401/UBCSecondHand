@@ -10,17 +10,19 @@ router.post("/login", passport.authenticate('local'
     res.send(200);
 });
 router.post("/register", async (req, res) => {
-    console.log("welcome to login in page");
+    console.log("welcome to register in page");
     const {username, password} = req.body;
     const findEmail = await UserDB.findOne({email: username});
     if(findEmail) {
-        res.redirect("login"); //TODO: it should change once homepage is determined
+        res.send(302); //TODO: it should change once homepage is determined
         
     } else {
         
         await UserDB.create({email: username, password: password});
         console.log("successfully register");
-        res.redirect("/");
+        //res.send(201);
+        res.redirect(307, "/api/auth/login");
+        
 
     }
     
